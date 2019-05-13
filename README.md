@@ -2,6 +2,11 @@
 Golang implementation of the packet encryption/decryption algorithms used by the
 MMORPG NosTale.
 
+## Installation
+```
+go get -u github.com/gilgames000/go-noscrypto/...
+```
+
 ## Packages
 - [noscryptoclt](https://github.com/Gilgames000/go-noscrypto/tree/master/pkg/noscryptoclt) - algorithms used by NosTale Gameforge client
 - [noscryptosrv](https://github.com/Gilgames000/go-noscrypto/tree/master/pkg/noscryptosrv) - algorithms used by NosTale Gameforge server (incomplete)
