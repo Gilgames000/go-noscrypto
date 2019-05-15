@@ -6,10 +6,10 @@ import (
 	"testing"
 )
 
-func Test_DecryptLoginPacket(t *testing.T) {
+func Test_EncryptLoginPacket(t *testing.T) {
 	packet := "testing packet"
-	encrypted := noscryptoclt.EncryptLoginPacket(packet)
-	decrypted := DecryptLoginPacket(encrypted)
+	encrypted := EncryptLoginPacket(packet)
+	decrypted := noscryptoclt.DecryptLoginPacket(encrypted)
 
 	assert.Equal(t, packet, decrypted, "Decrypted packet should be the same as the one encrypted by client encryption algorithm")
 }
