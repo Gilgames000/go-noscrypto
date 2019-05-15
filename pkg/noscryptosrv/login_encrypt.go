@@ -1,7 +1,6 @@
 package noscryptosrv
 
 import (
-	"bytes"
 	"strings"
 )
 
