@@ -4,7 +4,23 @@ MMORPG NosTale.
 
 ## Installation
 ```
-go get -u github.com/gilgames000/go-noscrypto/...
+go get -u github.com/gilgames000/go-noscrypto/
+```
+
+## Example
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/gilgames000/go-noscrypto/pkg/noscryptoclt"
+)
+
+func main() {
+	sessionNumber := 10
+	encryptedPacket := noscryptoclt.EncryptGamePacket("say 1 1337 0 Hello World", sessionNumber)
+	fmt.Println("encryptedPacket : ", encryptedPacket)
+}
 ```
 
 ## Packages
