@@ -11,5 +11,5 @@ func Test_Decrypt(t *testing.T) {
 	encrypted := noscryptoclt.EncryptLoginPacket(packet)
 	decrypted := DecryptLoginPacket(encrypted)
 
-	assert.Equal(t, packet, decrypted, "Decrypted packet should be the same as the original one")
+	assert.Equal(t, packet, decrypted, "Decrypted packet should be the same as the one encrypted by client encryption algorithm")
 }
