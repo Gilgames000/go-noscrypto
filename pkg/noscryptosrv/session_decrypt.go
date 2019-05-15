@@ -1,7 +1,7 @@
 package noscryptosrv
 
 import (
-	"bytes"
+	"strings"
 )
 
 // DecryptSessionPacket decrypts and returns the packet passed as argument
@@ -9,7 +9,7 @@ import (
 func DecryptSessionPacket(packet string) (decryptedPacket string) {
 	var firstbyte byte
 	var secondbyte byte
-	var result bytes.Buffer
+	var result strings.Builder
 
 	packetBytes := []byte(packet)
 

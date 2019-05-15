@@ -1,7 +1,7 @@
 package noscryptoclt
 
 import (
-	"bytes"
+	"strings"
 )
 
 // EncryptGamePacket encrypts and returns the packet passed as argument
@@ -113,7 +113,7 @@ func firstEncryption(packet string) string {
 }
 
 func secondEncryption(packet string, sessionNumber int) string {
-	var buf bytes.Buffer
+	var buf strings.Builder
 	var sessionKey byte
 	var xorKey byte
 

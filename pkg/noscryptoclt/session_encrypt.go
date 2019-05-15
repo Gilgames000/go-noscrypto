@@ -2,6 +2,7 @@ package noscryptoclt
 
 import (
 	"bytes"
+	"strings"
 )
 
 // EncryptSessionPacket encrypts and returns the packet passed as argument
@@ -9,7 +10,7 @@ import (
 func EncryptSessionPacket(packet string) (encryptedPacket string) {
 	var firstbyte byte
 	var secondbyte byte
-	var result bytes.Buffer
+	var result strings.Builder
 
 	evalByte := func(b byte) byte {
 		switch b {

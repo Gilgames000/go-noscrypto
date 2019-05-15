@@ -1,7 +1,7 @@
 package noscryptoclt
 
 import (
-	"bytes"
+	"strings"
 )
 
 // DecryptGamePacket decrypts and returns the packet passed as argument
@@ -10,8 +10,8 @@ import (
 // argument, they will all be decrypted and separated by '\n' in the
 // returned string.
 func DecryptGamePacket(packet string) (decryptedPacket string) {
-	var result bytes.Buffer
-	var currentPacket string
+	var result strings.Builder
+	var currentPacket strings.Builder
 	var currentByte byte
 	var firstChar byte
 	var secondChar byte
@@ -29,11 +29,11 @@ func DecryptGamePacket(packet string) (decryptedPacket string) {
 
 		// The 0xFF byte represents the end of the current packet
 		if currentByte == 0xFF {
-			result.WriteString(currentPacket)
+			result.WriteString(currentPacket.String())
 			if i != len(packetBytes) {
 				result.WriteByte('\n')
 			}
-			currentPacket = ""
+			currentPacket.Reset()
 			continue
 		}
 
@@ -51,7 +51,7 @@ func DecryptGamePacket(packet string) (decryptedPacket string) {
 
 					firstChar = charTable[((currentByte&0xF0)>>4)-1]
 					if firstChar != 0x6E {
-						currentPacket += string(firstChar)
+						currentPacket.WriteByte(firstChar)
 					}
 
 					if substringLength <= 1 {
@@ -60,7 +60,7 @@ func DecryptGamePacket(packet string) (decryptedPacket string) {
 
 					secondChar = charTable[(currentByte&0xF)-1]
 					if secondChar != 0x6E {
-						currentPacket += string(secondChar)
+						currentPacket.WriteByte(secondChar)
 					}
 
 					substringLength -= 2
@@ -73,7 +73,7 @@ func DecryptGamePacket(packet string) (decryptedPacket string) {
 			// bits (ones' complement)
 			for substringLength != 0 {
 				if i < len(packetBytes) {
-					currentPacket += string(packetBytes[i] ^ 0xFF)
+					currentPacket.WriteByte(packetBytes[i] ^ 0xFF)
 					i++
 				}
 				substringLength--

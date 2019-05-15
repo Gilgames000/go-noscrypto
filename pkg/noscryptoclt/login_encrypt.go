@@ -1,13 +1,13 @@
 package noscryptoclt
 
 import (
-	"bytes"
+	"strings"
 )
 
 // EncryptLoginPacket encrypts and returns the packet passed as argument
 // using the client's login encryption algorithm.
 func EncryptLoginPacket(packet string) (encryptedPacket string) {
-	var buf bytes.Buffer
+	var buf strings.Builder
 
 	for _, ch := range []byte(packet) {
 		buf.WriteByte((ch ^ 0xC3) + 0x0F)
