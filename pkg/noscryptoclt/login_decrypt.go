@@ -4,7 +4,6 @@ import (
 	"strings"
 )
 
-
 // DecryptLoginPacket decrypts and returns the packet passed as argument
 // using the client's login decryption algorithm.
 func DecryptLoginPacket(packet string) (decryptedPacket string) {

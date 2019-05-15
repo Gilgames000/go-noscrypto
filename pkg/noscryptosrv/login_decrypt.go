@@ -9,7 +9,7 @@ import (
 func DecryptLoginPacket(packet string) (decryptedPacket string) {
 	var buf strings.Builder
 
-	for _, ch := range []byte(packet[:len(packet)-2]) {
+	for _, ch := range []byte(packet[:len(packet)-1]) {
 		buf.WriteByte((ch - 0x0F) ^ 0xC3)
 	}
 
